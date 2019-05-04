@@ -17404,7 +17404,7 @@ var ArenaController = function (_Controller) {
 }(_dom2.default);
 
 exports.default = ArenaController;
-},{"../models/factory":345,"./dom":338,"./side":340}],334:[function(require,module,exports){
+},{"../models/factory":347,"./dom":338,"./side":340}],334:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -17774,7 +17774,7 @@ var DeckController = function (_Controller) {
 }(_dom2.default);
 
 exports.default = DeckController;
-},{"../models/factory":345,"./card":335,"./dom":338}],338:[function(require,module,exports){
+},{"../models/factory":347,"./card":335,"./dom":338}],338:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -18136,6 +18136,76 @@ var main = function main() {
 
 exports.default = new main();
 },{"./controllers/arena":333,"babel-polyfill":1}],343:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _hand = require("./hand");
+
+var _hand2 = _interopRequireDefault(_hand);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Board = function (_Hand) {
+    _inherits(Board, _Hand);
+
+    function Board(config) {
+        _classCallCheck(this, Board);
+
+        return _possibleConstructorReturn(this, (Board.__proto__ || Object.getPrototypeOf(Board)).call(this, config));
+    }
+
+    return Board;
+}(_hand2.default);
+
+exports.default = Board;
+
+
+module.exports = Board;
+},{"./hand":349}],344:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _deck = require("./deck");
+
+var _deck2 = _interopRequireDefault(_deck);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Cemetary = function (_Deck) {
+    _inherits(Cemetary, _Deck);
+
+    function Cemetary(config) {
+        _classCallCheck(this, Cemetary);
+
+        return _possibleConstructorReturn(this, (Cemetary.__proto__ || Object.getPrototypeOf(Cemetary)).call(this, config));
+    }
+
+    return Cemetary;
+}(_deck2.default);
+
+exports.default = Cemetary;
+
+
+module.exports = Cemetary;
+},{"./deck":346}],345:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -18154,6 +18224,18 @@ var _player = require('./player');
 
 var _player2 = _interopRequireDefault(_player);
 
+var _board = require('./board');
+
+var _board2 = _interopRequireDefault(_board);
+
+var _hand = require('./hand');
+
+var _hand2 = _interopRequireDefault(_hand);
+
+var _cemetary = require('./cemetary');
+
+var _cemetary2 = _interopRequireDefault(_cemetary);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
@@ -18163,14 +18245,26 @@ exports.default = {
     },
     "deck": {
         "class": _deck2.default,
-        "param": '{"cards" : [{"face":"card-1"}, {"face":"card-2"}]}'
+        "param": '{"cards" : [{"face":"card-1"}, {"face":"card-2"}, {"face":"card-1"}, {"face":"card-2"}]}'
     },
     "player": {
         "class": _player2.default,
         "param": '{}'
+    },
+    "board": {
+        "class": _board2.default,
+        "parem": '{}'
+    },
+    "hand": {
+        "class": _hand2.default,
+        "parem": '{"cards" : [{"face":"card-1"}, {"face":"card-2"}], "limit" : 5}'
+    },
+    "cemetary": {
+        "class": _cemetary2.default,
+        "parem": '{}'
     }
 };
-},{"./deck":344,"./game":346,"./player":348}],344:[function(require,module,exports){
+},{"./board":343,"./cemetary":344,"./deck":346,"./game":348,"./hand":349,"./player":351}],346:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -18246,8 +18340,8 @@ var Deck = function () {
 exports.default = Deck;
 
 
-module.exports = { Deck: Deck };
-},{}],345:[function(require,module,exports){
+module.exports = Deck;
+},{}],347:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -18291,7 +18385,7 @@ exports.default = {
     }
 
 };
-},{"./config":343}],346:[function(require,module,exports){
+},{"./config":345}],348:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -18308,7 +18402,67 @@ var Game = function Game(config) {
 };
 
 exports.default = Game;
-},{}],347:[function(require,module,exports){
+},{}],349:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Hand = function () {
+    function Hand() {
+        var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { cards: [], limit: limit };
+
+        _classCallCheck(this, Hand);
+
+        this.limit = config.limit;
+        this.cards = config.cards;
+        if (!config.limit) {
+            this.limit = 7;
+        }
+    }
+
+    _createClass(Hand, [{
+        key: "addCard",
+        value: function addCard(card) {
+            if (this.limit > this.cards.length && card) {
+                this.cards[this.cards.length] = card;
+                return true;
+            }
+            return false;
+        }
+    }, {
+        key: "removeCard",
+        value: function removeCard(position) {
+            if (this.cards.length > 0 && this.cards[position]) {
+                return this.cards.splice(position, 1);
+            }
+            return false;
+        }
+    }, {
+        key: "getAllCards",
+        value: function getAllCards() {
+            return this.cards;
+        }
+    }, {
+        key: "getCardsCount",
+        value: function getCardsCount() {
+            return this.cards.length;
+        }
+    }]);
+
+    return Hand;
+}();
+
+exports.default = Hand;
+
+
+module.exports = Hand;
+},{}],350:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -18318,6 +18472,10 @@ Object.defineProperty(exports, "__esModule", {
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _eventManager = require("../eventManager");
+
+var _eventManager2 = _interopRequireDefault(_eventManager);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -18375,13 +18533,13 @@ var Pawn = function (_EventManager) {
     }]);
 
     return Pawn;
-}(_eventManager.EventManager);
+}(_eventManager2.default);
 
 exports.default = Pawn;
 
 
-module.exports = { Pawn: Pawn };
-},{"../eventManager":341}],348:[function(require,module,exports){
+module.exports = Pawn;
+},{"../eventManager":341}],351:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -18396,6 +18554,8 @@ var _factory2 = _interopRequireDefault(_factory);
 
 var _pawn = require('./pawn');
 
+var _pawn2 = _interopRequireDefault(_pawn);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -18407,33 +18567,56 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Player = function (_Pawn) {
     _inherits(Player, _Pawn);
 
-    function Player(config) {
+    function Player() {
+        var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { deck: [] };
+
         _classCallCheck(this, Player);
 
-        var _this = _possibleConstructorReturn(this, (Player.__proto__ || Object.getPrototypeOf(Player)).call(this));
+        // this.type = config.type;
 
-        _this.type = config.type;
+        var _this = _possibleConstructorReturn(this, (Player.__proto__ || Object.getPrototypeOf(Player)).call(this));
 
         _this.deck = _factory2.default.get('deck');
         _this.board = _factory2.default.get('board');
         _this.hand = _factory2.default.get('hand');
         _this.cemetary = _factory2.default.get('cemetary');
+
+        if (!config.deck) {
+            config.deck = _this.deck || [];
+        }
         return _this;
     }
 
     _createClass(Player, [{
+        key: 'shuffle',
+        value: function shuffle() {
+            var deck = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "deck";
+
+            console.log(config.deck);
+            console.log(deck);
+        }
+    }, {
         key: 'draw',
         value: function draw() {
             return this.deck.draw();
         }
+    }, {
+        key: 'playCard',
+        value: function playCard() {}
+    }, {
+        key: 'discard',
+        value: function discard() {}
+    }, {
+        key: 'attack',
+        value: function attack() {}
     }]);
 
     return Player;
-}(_pawn.Pawn);
+}(_pawn2.default);
 
 exports.default = Player;
 
 
-module.exports = { Player: Player };
-},{"./factory":345,"./pawn":347}]},{},[342])
+module.exports = Player;
+},{"./factory":347,"./pawn":350}]},{},[342])
 //# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiIiwic291cmNlcyI6WyJhcHAuanMiXSwic291cmNlc0NvbnRlbnQiOlsiJ3VzZSBzdHJpY3QnO1xuXG5PYmplY3QuZGVmaW5lUHJvcGVydHkoZXhwb3J0cywgXCJfX2VzTW9kdWxlXCIsIHtcbiAgICB2YWx1ZTogdHJ1ZVxufSk7XG5cbnJlcXVpcmUoJ2JhYmVsLXBvbHlmaWxsJyk7XG5cbnZhciBfYXJlbmEgPSByZXF1aXJlKCcuL2NvbnRyb2xsZXJzL2FyZW5hJyk7XG5cbnZhciBfYXJlbmEyID0gX2ludGVyb3BSZXF1aXJlRGVmYXVsdChfYXJlbmEpO1xuXG5mdW5jdGlvbiBfaW50ZXJvcFJlcXVpcmVEZWZhdWx0KG9iaikgeyByZXR1cm4gb2JqICYmIG9iai5fX2VzTW9kdWxlID8gb2JqIDogeyBkZWZhdWx0OiBvYmogfTsgfVxuXG5mdW5jdGlvbiBfY2xhc3NDYWxsQ2hlY2soaW5zdGFuY2UsIENvbnN0cnVjdG9yKSB7IGlmICghKGluc3RhbmNlIGluc3RhbmNlb2YgQ29uc3RydWN0b3IpKSB7IHRocm93IG5ldyBUeXBlRXJyb3IoXCJDYW5ub3QgY2FsbCBhIGNsYXNzIGFzIGEgZnVuY3Rpb25cIik7IH0gfVxuXG52YXIgbWFpbiA9IGZ1bmN0aW9uIG1haW4oKSB7XG4gICAgX2NsYXNzQ2FsbENoZWNrKHRoaXMsIG1haW4pO1xuXG4gICAgbmV3IF9hcmVuYTIuZGVmYXVsdCgpO1xufTtcblxuZXhwb3J0cy5kZWZhdWx0ID0gbmV3IG1haW4oKTsiXSwiZmlsZSI6ImFwcC5qcyJ9

@@ -1,5 +1,5 @@
 export default class Deck {
-    constructor (config = {cards: []}) {
+    constructor (config={cards: []}) {
         this.cards = config.cards
     }
     

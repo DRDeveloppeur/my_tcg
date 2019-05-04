@@ -1,6 +1,6 @@
 export default class Hand {
     
-    constructor (config) {
+    constructor (config = {cards: [], limit}) {
         this.limit = config.limit;
         this.cards = config.cards
         if (!config.limit) {

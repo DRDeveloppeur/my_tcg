@@ -25,15 +25,14 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Player = function (_Pawn) {
     _inherits(Player, _Pawn);
 
-    function Player(config) {
+    function Player() {
+        var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { deck: [] };
+
         _classCallCheck(this, Player);
-
-        var _this = _possibleConstructorReturn(this, (Player.__proto__ || Object.getPrototypeOf(Player)).call(this));
-
-        console.log(config);
 
         // this.type = config.type;
 
+        var _this = _possibleConstructorReturn(this, (Player.__proto__ || Object.getPrototypeOf(Player)).call(this));
 
         _this.deck = _factory2.default.get('deck');
         _this.board = _factory2.default.get('board');

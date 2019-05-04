@@ -9,7 +9,9 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Hand = function () {
-    function Hand(config) {
+    function Hand() {
+        var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { cards: [], limit: limit };
+
         _classCallCheck(this, Hand);
 
         this.limit = config.limit;
